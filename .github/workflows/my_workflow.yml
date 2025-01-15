@@ -4,29 +4,43 @@ on:
   workflow_dispatch:
     inputs:
       Environment:
-        description: "The environnement, I need to deploy on"
+        description: 'The environment I need to deploy on'
         required: true
         default: '/dev'
 
 jobs:
-    manual-job:
+    manual-job-dev:
         runs-on: ubuntu-latest
+        environment: dev
 
         steps:
           - name: Example
             run: |
-              echo "Mon exemple"
-              echo "Env Name: ${{ github.event.inputs.Environment }}"
+             echo "Mon exemple"
+             echo "Env name: ${{ github.event.inputs.Environment }}"
           - name: Github Variable
             run: echo '${{ toJSON(github) }}'
-
           - name: Runner Variable
             run: echo '${{ toJSON(runner) }}'
-            
-          - name: Secrets Variable
+          - name: Secret Variable
             run: echo '${{ toJSON(secrets) }}'
-            
-            
-            
+          - name: Env Variable
+            run: echo '${{ vars.MY_API_URL }}'
 
+    manual-job-prod:
+        runs-on: ubuntu-latest
+        environment: prod
 
+        steps:
+          - name: Example
+            run: |
+             echo "Mon exemple"
+             echo "Env name: ${{ github.event.inputs.Environment }}"
+          - name: Github Variable
+            run: echo '${{ toJSON(github) }}'
+          - name: Runner Variable
+            run: echo '${{ toJSON(runner) }}'
+          - name: Secret Variable
+            run: echo '${{ toJSON(secrets) }}'
+          - name: Env Variable
+            run: echo '${{ vars.MY_PROD_URL }}'
