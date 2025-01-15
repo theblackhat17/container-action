@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       Environnements:
-        description: "The environnement, I nedd to deploy on"
+        description: "The environnement, I need to deploy on"
         required: true
         default: '/dev'
 
@@ -16,4 +16,15 @@ jobs:
           - name: Example
             run: |
               echo "Mon exemple"
-              echo "Env Name: ${{ github.event.inputs.Environnements }}"
+              echo "Env Name: ${{ github.event.inputs.Environnements }}
+
+          - name: Github Variable
+            run: echo "${{ toJSON(github)}}"
+            
+          - name: Runner Variable
+            run: echo "${{ toJSON(runner)}}"
+            
+            
+            
+
+
