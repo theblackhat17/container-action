@@ -19,10 +19,10 @@ jobs:
               echo "Env Name: ${{ github.event.inputs.Environnements }}
 
           - name: Github Variable
-            run: echo "${{ toJSON(github)}}"
+            run: echo '${{ toJSON(github)}}'
             
           - name: Runner Variable
-            run: echo "${{ toJSON(runner)}}"
+            run: echo '${{ toJSON(runner)}}'
             
             
             
