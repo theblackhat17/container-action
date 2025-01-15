@@ -3,7 +3,7 @@ name: Test Manual Workflow
 on:
   workflow_dispatch:
     inputs:
-      Environnements:
+      Environment:
         description: "The environnement, I need to deploy on"
         required: true
         default: '/dev'
@@ -16,13 +16,11 @@ jobs:
           - name: Example
             run: |
               echo "Mon exemple"
-              echo "Env Name: ${{ github.event.inputs.Environnements }}
-
+              echo "Env Name: ${{ github.event.inputs.Environment }}"
           - name: Github Variable
-            run: echo '${{ toJSON(github)}}'
-            
+            run: echo '${{ toJSON(github) }}'
           - name: Runner Variable
-            run: echo '${{ toJSON(runner)}}'
+            run: echo '${{ toJSON(runner) }}'
             
             
             
