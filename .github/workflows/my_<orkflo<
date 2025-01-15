@@ -2,6 +2,11 @@ name: Test Manual Workflow
 
 on:
   workflow_dispatch:
+    inputs:
+      Environnements:
+        description: "The environnement, I nedd to deploy on"
+        required: true
+        default: '/dev'
 
 jobs:
     manual-job:
